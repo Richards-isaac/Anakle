@@ -1,5 +1,7 @@
 <?php
-
+/*
+* Database Class to take care of Database functions
+*/
 
 class Database  {
 
@@ -15,6 +17,7 @@ class Database  {
         
 
         if (mysqli_connect_errno()) {
+            
             echo "Database error " . mysqli_connect_error();
            
         }

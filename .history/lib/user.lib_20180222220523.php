@@ -3,7 +3,7 @@
 require_once('session.lib.php');
 
 /**
-* Basic User Class Extending Database
+* Basic User Class Extending Databse
 *
 *
 * @author Seyi Onifade <xyluz@ymail.com>

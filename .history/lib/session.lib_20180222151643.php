@@ -15,40 +15,23 @@
 class Session extends Database {
 
     protected $isLogged = false;
-
+    
     
     
     public function __construct() {
 
-       session_start();       
+        
+        $this->db = new mysqli($this->dbhost, $this->dbuser, $this->dbpass, $this->dbname);
+
+        if (mysqli_connect_errno()) {
+            
+            trigger_error("Failed to conencto to MySQL: " . mysqli_connect_error(), E_USER_ERROR);
+           
+        }
+        else{
+            return $this->db;
+        }
                
     }
-
-    public function checkUser(){
-
-        if(isset($_SESSION['loggedIn'])){
-
-            $this->isLogged = true;
-
-        }
-
-        return $this->isLogged;
-
-    }
-
-    public function login($id){
-
-        $_SESSION['loggedIn'] = $id;
-
-    }
-
-    public function logout(){
-
-        unset($_SESSION['loggedIn']);
-        session_destroy();
-
-    }
-
-
 
 }

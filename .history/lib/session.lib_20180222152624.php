@@ -20,7 +20,8 @@ class Session extends Database {
     
     public function __construct() {
 
-       session_start();       
+       session_start();
+       
                
     }
 
@@ -33,19 +34,6 @@ class Session extends Database {
         }
 
         return $this->isLogged;
-
-    }
-
-    public function login($id){
-
-        $_SESSION['loggedIn'] = $id;
-
-    }
-
-    public function logout(){
-
-        unset($_SESSION['loggedIn']);
-        session_destroy();
 
     }
 

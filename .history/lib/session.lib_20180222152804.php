@@ -42,12 +42,7 @@ class Session extends Database {
 
     }
 
-    public function logout(){
-
-        unset($_SESSION['loggedIn']);
-        session_destroy();
-
-    }
+    public function logout()
 
 
 

@@ -20,35 +20,9 @@ class Session extends Database {
     
     public function __construct() {
 
-       session_start();       
+        //check if user is logged in
+       
                
     }
-
-    public function checkUser(){
-
-        if(isset($_SESSION['loggedIn'])){
-
-            $this->isLogged = true;
-
-        }
-
-        return $this->isLogged;
-
-    }
-
-    public function login($id){
-
-        $_SESSION['loggedIn'] = $id;
-
-    }
-
-    public function logout(){
-
-        unset($_SESSION['loggedIn']);
-        session_destroy();
-
-    }
-
-
 
 }

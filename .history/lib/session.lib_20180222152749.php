@@ -36,18 +36,13 @@ class Session extends Database {
 
     }
 
-    public function login($id){
+    public function login(){
 
-        $_SESSION['loggedIn'] = $id;
 
-    }
-
-    public function logout(){
-
-        unset($_SESSION['loggedIn']);
-        session_destroy();
 
     }
+
+    public function logout()
 
 
 

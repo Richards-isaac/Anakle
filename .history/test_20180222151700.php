@@ -2,7 +2,7 @@
 
 require_once("__autoload.php");
 
-$s =  new User;
+$s =  new Session;
 
 
 

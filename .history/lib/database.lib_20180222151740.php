@@ -66,7 +66,7 @@ class Database  {
 
     public function __destruct(){
         
-        isset($this->db) ? mysqli_close($this->db) : null;
+        mysqli_close($this->db);
 
     }
  

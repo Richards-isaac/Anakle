@@ -19,13 +19,11 @@ class User extends Database  {
     protected $name = false;
     protected $session;
     
-    public function index(){
-        return "test";
-    }
-    public function __construct() {  
+    
+    public function __construct() {        
 
-        parent::__construct();
-        $this->session = new Session;        
+       $this->session = new Session;
+       return $this->db;
                
     }
 
@@ -38,7 +36,7 @@ class User extends Database  {
 
         $hash = md5($password);
 
-        $try = $this->query("INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES (NULL, '$name', '$email', '$hash')");
+        $try = $this->query("INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES (NULL, $name, $email, $hash)");
 
         if($try){
             return true;
@@ -53,7 +51,7 @@ class User extends Database  {
         $email = $array['email'];
         $password = md5($array['password']);
 
-        $try = $this->query("SELECT `id` FROM `users` WHERE `email` = '$email' AND `password` = '$password' ");
+        $try = $this->query("SELECT `id` FROM `users` WHERE `email` = $email AND `password` = $password ");
         $id = $this->fetch();
 
         if($id){

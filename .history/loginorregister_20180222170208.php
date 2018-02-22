@@ -1,12 +1,5 @@
 <?php
-
 require_once("__autoload.php");
 
-$s =  new Session;
-
-$s->logout();
-
-
-
-
+$session =  new Session;
 

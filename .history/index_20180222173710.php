@@ -139,11 +139,9 @@
             function success(response) {
                 if(response =='done'){
                     $('#message').addClass("alert-success");
-                    $('#message').removeClass("alert-error");
                     $('#message').html("Success!")
                 }else{
                     $('#message').addClass("alert-danger");
-                    $('#message').removeClass("alert-success");
                     $('#message').html("Invalid Username or Password")
                 }                
 

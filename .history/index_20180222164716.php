@@ -55,18 +55,17 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="alert" id="message"></div>
       <div class="modal-body">
 
-            <div class="col-md-6" id="name-box-1">Name</div><div class="col-md-6" id="name-box-2"><input type="text" id="name" class="form-control" /></div>
-            <div class="col-md-6">Email</div><div class="col-md-6"><input type="email" id="email" class="form-control" /></div>
-            <div class="col-md-6">Password</div><div class="col-md-6"><input type="password" id="password"  class="form-control"/></div>
+            <div class="col-md-6">Name</div><div class="col-md-6"><input type="text" name="email" class="form-control" /></div>
+            <div class="col-md-6">Email</div><div class="col-md-6"><input type="text" name="email" class="form-control" /></div>
+            <div class="col-md-6">Password</div><div class="col-md-6"><input type="text" name="password"  class="form-control"/></div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal" id="lf_close">Close</button>
-        <button onclick="loginOrRegister()" type="button" class="btn btn-success">Continue</button>
-        <div id="account-notice"><a class="btn btn-default"  onclick="switchForm('lf')">No Account? Register</a></div>
+        <button onclick="login()" type="button" class="btn btn-success">Continue</button>
+        <a class="btn btn-default" onclick="switchForm('lf')">No Account? Register</button>
       </div>
     </div>
   </div>
@@ -90,10 +89,7 @@
 <script src="js/welcome.min.js"></script>
 
 <script>
-    $( document ).ready(function() {
-        $("#name-box-1").hide();
-        $("#name-box-2").hide();
-    });
+
     function checklogin(){       
 
         $.ajax('checkuserlogin.php', {
@@ -108,7 +104,7 @@
                     $('#add_modal').click();
                 }else{
                     console.log('display login form');
-                    $('#login_modal').click();
+                    $('#register_modal').click();
                 }
 
                 console.log(response);
@@ -121,60 +117,26 @@
 
     }
 
-    function loginOrRegister(){
+    function login(){
 
-        var name = $('#name').val();
-        var email = $('#email').val();
-        var password = $('#password').val();
 
-        $.ajax('loginorregister.php',{
-            method: 'POST',
-            data: {
-                name: name,
-                email: email,
-                password: password
-            }
-        })
-        .then(
-            function success(response) {
-                if(response =='done'){
-                    $('#message').addClass("alert-success");
-                    $('#message').removeClass("alert-error");
-                    $('#message').html("Success!")
-                }else{
-                    $('#message').addClass("alert-danger");
-                    $('#message').removeClass("alert-success");
-                    $('#message').html("Invalid Username or Password")
-                }                
-
-            },
-
-            function fail(data, status) {
-                alert(status);
-            }
-        );
 
     }
 
     function switchForm(n){
 
-        if(n == '2'){
+        if(n == 'rf'){
 
             // open login form
-            //close register form        
-            $("#name-box-1").hide();
-            $("#name-box-2").hide();
-             $('#name').val('');
-            $("#account-notice").html("<a class='btn btn-default'  onclick='switchForm(1)'>No Account? Register</a>");
+            //close register form
+            $('#rf_close').click();
+            $('#login_modal').click();
 
         }else{
-
             //open register form
-            //close login form        
-            $("#name-box-1").show();
-            $("#name-box-2").show();
-            $("#account-notice").html("<a class='btn btn-default'  onclick='switchForm(2)'>Have Account? Login</a>");
-
+            //close login form
+            $('#lf_close').click();
+            $('#register_modal').click();
         }
 
     }

@@ -55,11 +55,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="alert" id="message"></div>
       <div class="modal-body">
 
             <div class="col-md-6" id="name-box-1">Name</div><div class="col-md-6" id="name-box-2"><input type="text" id="name" class="form-control" /></div>
-            <div class="col-md-6">Email</div><div class="col-md-6"><input type="email" id="email" class="form-control" /></div>
+            <div class="col-md-6">Email</div><div class="col-md-6"><input type="text" id="email" class="form-control" /></div>
             <div class="col-md-6">Password</div><div class="col-md-6"><input type="password" id="password"  class="form-control"/></div>
 
       </div>
@@ -137,15 +136,8 @@
         })
         .then(
             function success(response) {
-                if(response =='done'){
-                    $('#message').addClass("alert-success");
-                    $('#message').removeClass("alert-error");
-                    $('#message').html("Success!")
-                }else{
-                    $('#message').addClass("alert-danger");
-                    $('#message').removeClass("alert-success");
-                    $('#message').html("Invalid Username or Password")
-                }                
+
+                console.log(response);
 
             },
 

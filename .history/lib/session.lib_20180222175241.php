@@ -15,6 +15,7 @@
 class Session {
 
     protected $isLogged = false;
+
     
     
     public function __construct() {

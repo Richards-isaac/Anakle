@@ -31,13 +31,13 @@
                         <a onclick="checklogin()"  class="btn btn-secondary pull-right">Create</a>
                         <?php require_once('__autoload.php'); 
                             $session = new Session;
-                            if($session->checkUser()){
+                            if($session->checkUser){
                         ?>
-                        <a onclick="logout()" id="logoutbutton"  class="btn btn-danger pull-right">Logout</a>
+                        <a onclick="checklogin()"  class="btn btn-danger pull-right">Logout</a>
 
                         <?php } ?>
 
-                  
+                        ?>
                     </div>
                 </div>
                 </div>
@@ -46,11 +46,11 @@
         </div>
         </div>
 
-<!-- login Register modal starts-->
+<!-- login modal starts-->
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" id="login_modal" data-toggle="modal" data-target="#exampleModalCenter" style="display:none;">
+<button type="button" class="btn btn-primary" id="login_modal" data-toggle="modal" data-target="#exampleModalCenter">
   Launch
 </button>
 
@@ -64,7 +64,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <span class="alert" id="message" style="display:none"></span>
+      <div class="alert" id="message"></div>
       <div class="modal-body">
 
             <div class="col-md-6" id="name-box-1">Name</div><div class="col-md-6" id="name-box-2"><input type="text" id="name" class="form-control" /></div>
@@ -84,45 +84,13 @@
 <!-- Login Register Modal Ends -->
 
 
-<!-- Create modal starts-->
+<!-- register modal starts-->
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" id="add_modal" data-toggle="modal" data-target="#addModalCenter" style="display:none;">
-  Launch
-</button>
+<
 
-<!-- Modal -->
-<div class="modal fade" id="addModalCenter" tabindex="-1" role="dialog" aria-labelledby="addModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addModalLongTitle">Create Store</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <span class="alert" id="message" style="display:none"></span>
-      <div class="modal-body">
-
-            <div class="col-md-12">Store Name</div><div class="col-md-6"><input type="text" id="store_name" class="form-control" /></div>
-            <div class="col-md-6">Address</div><div class="col-md-6"><textarea name="store_address" class="form-control"></textarea></div>
-            
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" id="add_close">Close</button>
-        <button onclick="loginOrRegister()" type="button" class="btn btn-success">Create</button> 
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Create Modal Ends -->
-
-
-
-
-
+<!-- Register Modal Ends -->
 
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery-3.3.1.min.js"></script> 
@@ -148,29 +116,9 @@
                     console.log('display add form');
                     $('#add_modal').click();
                 }else{
-             
+                    console.log('display login form');
                     $('#login_modal').click();
                 }
-
-            },
-
-            function fail(data, status) {
-                alert(status);
-            }
-        );
-
-    }
-
-    function logout(){       
-
-        $.ajax('logout.php', {
-            data: {
-                id: null
-            }
-        })
-        .then(
-            function success(response) {
-                $('#logoutbutton').hide();
 
                 console.log(response);
             },
@@ -180,7 +128,7 @@
             }
         );
 
-        }
+    }
 
     function loginOrRegister(){
 
@@ -201,9 +149,7 @@
                 if(response =='done'){
                     $('#message').addClass("alert-success");
                     $('#message').removeClass("alert-error");
-                    $('#message').html("Success!");
-                    $('#logoutbutton').show();
-                    $('#lf_close').click();
+                    $('#message').html("Success!")
                 }else{
                     $('#message').addClass("alert-danger");
                     $('#message').removeClass("alert-success");
@@ -218,42 +164,6 @@
         );
 
     }
-
-
-    function addStore(){
-
-        var store_name = $('#store_name').val();
-        var store_address = $('#store_address').val();
-   
-
-        $.ajax('store.php',{
-            method: 'POST',
-            data: {
-                store_name: store_name,
-                store_address: store_address     
-            }
-        })
-        .then(
-            function success(response) {
-                if(response =='done'){
-                    $('#message').addClass("alert-success");
-                    $('#message').removeClass("alert-error");
-                    $('#message').html("Store Created");                  
-                    $('#add_close').click();
-                }else{
-                    $('#message').addClass("alert-danger");
-                    $('#message').removeClass("alert-success");
-                    $('#message').html("Invalid Username or Password")
-                }                
-
-            },
-
-            function fail(data, status) {
-                alert(status);
-            }
-        );
-
-        }
 
     function switchForm(n){
 

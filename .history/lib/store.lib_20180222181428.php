@@ -14,12 +14,14 @@ require_once('session.lib.php');
 * @license GNU GENERAL PUBLIC LICENSE Version 3
 */
 
-class User extends Database  {
+class Store extends Database  {
 
     protected $name = false;
     protected $session;
     
-
+    public function index(){
+        return "test";
+    }
     public function __construct() {  
 
         parent::__construct();
@@ -31,38 +33,17 @@ class User extends Database  {
 
         //create a mew user
         $name = $array['name'];
-        $email = $array['email'];
-        $password = $array['password'];
+        $email = $array['address'];
+   
 
         $hash = md5($password);
 
-        $try = $this->query("INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES (NULL, '$name', '$email', '$hash')");
+        $try = $this->query("INSERT INTO `stores` (`id`, `name`, `email`, `password`) VALUES (NULL, '$name', '$email', '$hash')");
 
         if($try){
             return true;
         }else{
             return false;
-        }
-
-    }
-
-    public function login($array){
-
-        $email = $array['email'];
-        $password = md5($array['password']);
-
-        $try = $this->query("SELECT `id` FROM `users` WHERE `email` = '$email' AND `password` = '$password' ");
-        $id = $this->fetch();
-
-        if($id){
-
-            $this->session->login($id);
-            return true;
-
-        }else{
-
-            return false;
-
         }
 
     }

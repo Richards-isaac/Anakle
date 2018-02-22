@@ -97,7 +97,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addModalLongTitle">Create Store</h5>
+        <h5 class="modal-title" id="addModalLongTitle">Login</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -105,12 +105,12 @@
       <span class="alert" id="message" style="display:none"></span>
       <div class="modal-body">
 
-            <div class="col-md-12">Store Name</div><div class="col-md-6"><input type="text" id="store_name" class="form-control" /></div>
+            <div class="col-md-12">Store Name</div><div class="col-md-6"><input type="text" id="name" class="form-control" /></div>
             <div class="col-md-6">Address</div><div class="col-md-6"><textarea name="store_address" class="form-control"></textarea></div>
             
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" id="add_close">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" id="lf_close">Close</button>
         <button onclick="loginOrRegister()" type="button" class="btn btn-success">Create</button> 
       </div>
     </div>
@@ -222,15 +222,16 @@
 
     function addStore(){
 
-        var store_name = $('#store_name').val();
-        var store_address = $('#store_address').val();
+        var name = $('#store_name').val();
+        var email = $('#address').val();
    
 
         $.ajax('store.php',{
             method: 'POST',
             data: {
-                store_name: store_name,
-                store_address: store_address     
+                name: name,
+                email: email,
+                password: password
             }
         })
         .then(
@@ -238,8 +239,9 @@
                 if(response =='done'){
                     $('#message').addClass("alert-success");
                     $('#message').removeClass("alert-error");
-                    $('#message').html("Store Created");                  
-                    $('#add_close').click();
+                    $('#message').html("Success!");
+                    $('#logoutbutton').show();
+                    $('#lf_close').click();
                 }else{
                     $('#message').addClass("alert-danger");
                     $('#message').removeClass("alert-success");

@@ -26,11 +26,11 @@ class Store extends Database  {
     public function create($array){
 
         //create a mew user
-        $store_name = $array['store_name'];
-        $store_address = $array['store_address'];   
+        $name = $array['store_name'];
+        $address = $array['store_address'];   
 
 
-        $try = $this->query("INSERT INTO `stores` (`id`, `name`, `address`) VALUES (NULL, '$store_name', '$store_address')");
+        $try = $this->query("INSERT INTO `stores` (`id`, `name`, `address`) VALUES (NULL, '$name', '$address')");
 
         if($try){
             return true;

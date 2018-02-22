@@ -30,9 +30,13 @@
                         <a href="list.php" class="btn btn-secondary pull-left">List</a>
                         <a onclick="checklogin()"  class="btn btn-secondary pull-right">Create</a>
                         <?php require_once('__autoload.php'); 
-                            $session = new Session;                           
+                            $session = new Session;
+                            if($session->checkUser()){
                         ?>
-                        <a onclick="logout()" id="logoutbutton"  class="btn btn-danger pull-right" <?php if(!$session->checkUser()){ echo "style='display:none'"; } ?> >Logout</a>
+                        <a onclick="logout()" id="logoutbutton"  class="btn btn-danger pull-right">Logout</a>
+
+                        <?php } ?>
+
                   
                     </div>
                 </div>
@@ -60,7 +64,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <span class="alert" id="message"></span>
+      <span class="alert" id="message" style="display:none"></span>
       <div class="modal-body">
 
             <div class="col-md-6" id="name-box-1">Name</div><div class="col-md-6" id="name-box-2"><input type="text" id="name" class="form-control" /></div>
@@ -98,11 +102,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <span class="alert" id="store-message"></span>
+      <span class="alert" id="message" style="display:none"></span>
       <div class="modal-body">
 
             <div class="col-md-12">Store Name</div><div class="col-md-6"><input type="text" id="store_name" class="form-control" /></div>
-            <div class="col-md-6">Address</div><div class="col-md-6"><textarea id="store_address" class="form-control"></textarea></div>
+            <div class="col-md-6">Address</div><div class="col-md-6"><textarea name="store_address" class="form-control"></textarea></div>
             
       </div>
       <div class="modal-footer">
@@ -220,7 +224,8 @@
         console.log('inside');
         var store_name = $('#store_name').val();
         var store_address = $('#store_address').val();
-     
+   
+
         $.ajax('store.php',{
             method: 'POST',
             data: {
@@ -232,16 +237,14 @@
             function success(response) {
                 console.log(response);
                 if(response =='done'){
-                    $('#store-message').addClass("alert-success");
-                    $('#store-message').removeClass("alert-error");
-                    $('#store-message').html("Store Created");   
-                    $('#store_name').val('');
-                    $('#store_address').val('');             
-                    // $('#add_close').click();
+                    $('#message').addClass("alert-success");
+                    $('#message').removeClass("alert-error");
+                    $('#message').html("Store Created");                  
+                    $('#add_close').click();
                 }else{
-                    $('#store-message').addClass("alert-danger");
-                    $('#store-message').removeClass("alert-success");
-                    $('#store-message').html("Invalid Username or Password")
+                    $('#message').addClass("alert-danger");
+                    $('#message').removeClass("alert-success");
+                    $('#message').html("Invalid Username or Password")
                 }                
 
             },

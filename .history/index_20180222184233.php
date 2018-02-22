@@ -234,9 +234,7 @@
                 if(response =='done'){
                     $('#store-message').addClass("alert-success");
                     $('#store-message').removeClass("alert-error");
-                    $('#store-message').html("Store Created");   
-                    $('#store_name').val('');
-                    $('#store_address').val('');             
+                    $('#store-message').html("Store Created");                  
                     // $('#add_close').click();
                 }else{
                     $('#store-message').addClass("alert-danger");

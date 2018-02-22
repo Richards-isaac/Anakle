@@ -1,3 +1,5 @@
+!function(p){"use strict";p("body").vide({mp4:"mp4/bg.mp4",poster:"img/bg-mobile-fallback.jpg"},{posterType:"jpg"})}(jQuery);
+
 $( document ).ready(function() {
     $("#name-box-1").hide();
     $("#name-box-2").hide();

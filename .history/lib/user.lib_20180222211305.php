@@ -43,7 +43,6 @@ class User extends Database  {
             $this->login(['email'=>$email, 'password'=>$password]);
 
             return true;
-            
         }else{
             return false;
         }

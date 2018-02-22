@@ -37,13 +37,10 @@ class User extends Database  {
         $hash = md5($password);
 
         $try = $this->query("INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES (NULL, '$name', '$email', '$hash')");
-       
-        if($try){
-            
-            $this->login(['email'=>$email, 'password'=>$password]);
 
+        if($try){
+            $this->session->login($id);
             return true;
-            
         }else{
             return false;
         }

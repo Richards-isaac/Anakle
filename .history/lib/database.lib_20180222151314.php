@@ -1,7 +1,11 @@
 <?php
 /**
-* Basic Database Class to Take care of all database logic
+* Basic Database Class to Take care of all database related issues
 *
+* Database details are kept in seprate config file
+* for security, database connection is established
+* upon instantiation, class has a query method to
+* run all kinds of queries.
 *
 * fetch() methods stores result set in an array
 * MySQL connection is closed with destruct method.
@@ -41,12 +45,6 @@ class Database  {
             return $this->db;
         }
                
-    }
-
-    public function __destruct(){
-        
-        mysqli_close($this->db);
-
     }
 
     public function query($query){

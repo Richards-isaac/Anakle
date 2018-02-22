@@ -23,12 +23,12 @@
             <div class="col-12 my-auto">
                 <div class="masthead-content text-white py-5 py-md-0">
                 <h1 class="mb-3">Anakle: for Anakle</h1>
-                <p class="mb-5">Welcome to a place for adding and listing. You can do two things, 1. Create 2. List</p>
+                <p class="mb-5">Welcome to a place for adding and viewing store lists. You can do two things, 1. Add store 2. View Store</p>
                 <div class="input-group input-group-newsletter">
                     
                     <div class="input-group-append">
-                    <a class="btn btn-secondary pull-left">List</a>
-                    <a  class="btn btn-secondary pull-right">Create</a>
+                    <a class="btn btn-secondary">List Stoes</a>
+                    <a class="btn btn-secondary">Add Store</a>
                     </div>
                 </div>
                 </div>
@@ -43,12 +43,6 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/jquery.vide.min.js"></script>
 <script src="js/welcome.min.js"></script>
-
-<script>
-
-
-
-</script>
 
 </body>
 </html>

@@ -1,14 +1,6 @@
 <?php
-/**
-* Basic Database Class to Take care of all database logic
-*
-*
-* fetch() methods stores result set in an array
-* MySQL connection is closed with destruct method.
-*
-* @author Seyi Onifade <xyluz@ymail.com>
-* @copyright xyluz
-* @license GNU GENERAL PUBLIC LICENSE Version 3
+/*
+* Database Class to take care of Database functions
 */
 
 class Database  {
@@ -43,30 +35,10 @@ class Database  {
                
     }
 
-    public function __destruct(){
-        
-        mysqli_close($this->db);
-
-    }
-
     public function query($query){
 
-        $this->result = $this->db->query($query);
+        $this->result = $this->connection->query($query);
         return $this->result;
-
-    }
-
-    public function fetch(){
-
-        if(!$this->result){
-            return "no results";
-        }
-
-        while($row = $this->result->fetch_assoc()){
-            $rows[] = $row;
-        }
-
-        return $rows;
 
     }
  

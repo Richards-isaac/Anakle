@@ -26,9 +26,9 @@
                 <p class="mb-5">Welcome to a place for adding and listing. You can do two things, 1. Create 2. List</p>
                 <div class="input-group input-group-newsletter">
                     
-                    <div class="input-group-append">
-                    <a class="btn btn-secondary pull-left">List</a>
-                    <a  class="btn btn-secondary pull-right">Create</a>
+                    <div class="input-group-append pull-center">
+                    <a class="btn btn-secondary">List</a>
+                    <button type="button" class="btn btn-secondary">Create</a>
                     </div>
                 </div>
                 </div>

@@ -45,8 +45,8 @@ class Database  {
 
     public function __destruct(){
         
-        mysqli_close($this->db);
-
+        mysqli_close($this->connection);
+        
     }
 
     public function query($query){

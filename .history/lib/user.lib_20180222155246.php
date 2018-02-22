@@ -54,16 +54,11 @@ class User extends Database  {
         $id = $this->fetch();
 
         if($id){
-
             $this->session->login($id);
             return true;
-
         }else{
-
             return false;
-            
         }
 
     }
-
 }

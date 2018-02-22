@@ -1,7 +1,5 @@
 <?php
 
-require_once('session.lib.php');
-
 /**
 * Basic Session Class to Take care of all database logic
 *
@@ -14,15 +12,17 @@ require_once('session.lib.php');
 * @license GNU GENERAL PUBLIC LICENSE Version 3
 */
 
-class User extends Database  {
+class User extends Session  {
 
     protected $name = false;
-    protected $session;
-    
-    
-    public function __construct() {        
 
-       $this->session = new Session;
+    
+    
+    public function __construct() {
+
+        //check if user is logged in
+
+       
                
     }
 
@@ -35,7 +35,7 @@ class User extends Database  {
 
         $hash = md5($password);
 
-        $try = $this->query("INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES (NULL, $name, $email, $hash)");
+        $try = $s->query("INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES (NULL, $name, $email, $hash)");
 
         if($try){
             return true;
@@ -50,20 +50,5 @@ class User extends Database  {
         $email = $array['email'];
         $password = md5($array['password']);
 
-        $try = $this->query("SELECT `id` FROM `users` WHERE `email` = $email AND `password` = $password ");
-        $id = $this->fetch();
-
-        if($id){
-
-            $this->session->login($id);
-            return true;
-
-        }else{
-
-            return false;
-            
-        }
-
     }
-
 }

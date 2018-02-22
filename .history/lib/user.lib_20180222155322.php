@@ -57,11 +57,9 @@ class User extends Database  {
 
             $this->session->login($id);
             return true;
-
-        }else{
-
-            return false;
             
+        }else{
+            return false;
         }
 
     }

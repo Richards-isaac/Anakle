@@ -53,17 +53,6 @@ class User extends Database  {
         $try = $this->query("SELECT `id` FROM `users` WHERE `email` = $email AND `password` = $password ");
         $id = $this->fetch();
 
-        if($id){
-
-            $this->session->login($id);
-            return true;
-
-        }else{
-
-            return false;
-            
-        }
 
     }
-
 }

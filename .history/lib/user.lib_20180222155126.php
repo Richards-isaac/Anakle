@@ -20,7 +20,9 @@ class User extends Database  {
     protected $session;
     
     
-    public function __construct() {        
+    public function __construct() {
+
+        //check if user is logged in
 
        $this->session = new Session;
                
@@ -53,17 +55,6 @@ class User extends Database  {
         $try = $this->query("SELECT `id` FROM `users` WHERE `email` = $email AND `password` = $password ");
         $id = $this->fetch();
 
-        if($id){
-
-            $this->session->login($id);
-            return true;
-
-        }else{
-
-            return false;
-            
-        }
 
     }
-
 }
